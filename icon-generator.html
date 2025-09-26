@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        // Flutech Favicon Creator
+        function createFlutechFavicon(size) {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            // Gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#1a237e');
+            gradient.addColorStop(1, '#4a148c');
+            
+            // Draw rounded rectangle background
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            const radius = size * 0.15;
+            ctx.moveTo(radius, 0);
+            ctx.lineTo(size - radius, 0);
+            ctx.quadraticCurveTo(size, 0, size, radius);
+            ctx.lineTo(size, size - radius);
+            ctx.quadraticCurveTo(size, size, size - radius, size);
+            ctx.lineTo(radius, size);
+            ctx.quadraticCurveTo(0, size, 0, size - radius);
+            ctx.lineTo(0, radius);
+            ctx.quadraticCurveTo(0, 0, radius, 0);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Draw "F" letter
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `bold ${size * 0.6}px Arial, sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('F', size / 2, size / 2);
+            
+            return canvas.toDataURL('image/png');
+        }
+        
+        function downloadIcon(dataUrl, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = dataUrl;
+            link.click();
+        }
+        
+        // Create and download icons
+        window.onload = function() {
+            const sizes = [
+                {size: 16, name: 'favicon-16x16.png'},
+                {size: 32, name: 'favicon-32x32.png'},
+                {size: 192, name: 'Icon-192.png'},
+                {size: 512, name: 'Icon-512.png'}
+            ];
+            
+            sizes.forEach(({size, name}) => {
+                const dataUrl = createFlutechFavicon(size);
+                const img = document.createElement('img');
+                img.src = dataUrl;
+                img.title = name;
+                img.style.margin = '10px';
+                img.onclick = () => downloadIcon(dataUrl, name);
+                document.body.appendChild(img);
+            });
+            
+            const info = document.createElement('p');
+            info.innerHTML = 'Click on any icon to download. Right-click and "Save as..." to save manually.';
+            document.body.insertBefore(info, document.body.firstChild);
+        };
+    </script>
+</head>
+<body>
+    <h1>Flutech Icon Generator</h1>
+</body>
+</html>
