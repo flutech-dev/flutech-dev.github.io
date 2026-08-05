@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Flutech">
+  <rect width="512" height="512" rx="112" fill="#0b0d10"/>
+  <rect x="1" y="1" width="510" height="510" rx="111" fill="none" stroke="#1e242c" stroke-width="2"/>
+
+  <!-- Blok "F" -->
+  <g fill="#e6e8eb">
+    <rect x="150" y="128" width="54" height="256"/>
+    <rect x="150" y="128" width="198" height="54"/>
+    <rect x="150" y="218" width="150" height="54"/>
+  </g>
+
+  <!-- Terminal imleci -->
+  <rect x="284" y="308" width="66" height="76" fill="#4ade80"/>
+</svg>
